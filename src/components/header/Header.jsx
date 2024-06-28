@@ -1,45 +1,59 @@
-import React from 'react'
-import './Header.css'
-import { Link } from 'react-router-dom'
-import { IoHome } from "react-icons/io5";
-import { FcAbout } from "react-icons/fc";
-import { GiArchiveRegister } from "react-icons/gi";
-import { BiLogOutCircle } from "react-icons/bi";
-import { IoMdLogIn } from "react-icons/io";
-import { Userlogincontext } from '../../context/Userlogincontext';
-import { useContext } from 'react';
+import "./Header.css";
+import { Link } from "react-router-dom";
+import { IoIosHome } from "react-icons/io";
+import { FaRegistered } from "react-icons/fa";
+import { FaSignInAlt } from "react-icons/fa";
+import { IoMdInformationCircle } from "react-icons/io";
+import { FcStumbleupon } from "react-icons/fc";
+import { userLoginContext } from "../../context/Userlogincontext";
+import { useContext } from "react";
 
 function Header() {
-    let { logoutUser, userLoginStatus } = useContext(Userlogincontext);
+  let { logoutUser, userLoginStatus } = useContext(userLoginContext);
+
   return (
-    <div className='d-flex flex-wrap justify-content-around header phil'>
-        <h1 className='text-warning'>MY SHOPS</h1>
-        <ul className='nav fs-5 d-flex p-3 justify-content-around'>
-            <li className='nav-item'>
-                <Link to='' className='nav-link text-white'>
-                <IoHome className='text-warning me-1'/>Home</Link>
-            </li>
-            <li className='nav-item'>
-                <Link to='about' className='nav-link text-white'><FcAbout className='me-1' />About Us</Link>
-            </li>
-            <li className='nav-item'>
-                <Link to='register' className='nav-link text-white'><GiArchiveRegister className='text-warning me-1'/>Register</Link>
-            </li>
-            {userLoginStatus == false?(
-            <li className='nav-item'>
-                <Link to='login' className='nav-link text-white'><IoMdLogIn className='text-warning me-1'/>Login</Link>
-            </li>
-            ):(
-                <li className="nav-item">
+    <div className="d-flex flex-wrap justify-content-around header">
+      <h1>
+        {" "}
+        <FcStumbleupon className="fs-1" />
+        MyShop
+      </h1>
+      <ul className="nav fs-5 p-3">
+        <li className="nav-item">
+          <Link to="" className="nav-link text-white">
+            <IoIosHome className="fs-3 text-warning " /> Home
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="register" className="nav-link text-white">
+            <FaRegistered className="fs-3 text-warning " />
+            Register
+          </Link>
+        </li>
+        {userLoginStatus === false ? (
+          <li className="nav-item">
+            <Link to="login" className="nav-link text-white">
+              <FaSignInAlt className="fs-3 text-warning me-2 " />
+              Login
+            </Link>
+          </li>
+        ) : (
+          <li className="nav-item">
             <Link to="login" className="nav-link text-white" onClick={logoutUser}>
-            <BiLogOutCircle className='text-warning me-1' />
+              <FaSignInAlt className="fs-3 text-warning me-2 " />
               Logout
             </Link>
           </li>
-            )}
-        </ul>
+        )}
+        <li className="nav-item">
+          <Link to="about" className="nav-link text-white">
+            <IoMdInformationCircle className="fs-3 text-warning me-2 " />{" "}
+            Aboutus
+          </Link>
+        </li>
+      </ul>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

@@ -1,19 +1,18 @@
-import React from 'react'
-import './Footer.css'
-import { PiAddressBookFill } from "react-icons/pi";
-
+import './Footer.css';
+import { IoMdContact } from "react-icons/io";
+import { IoMdMail } from "react-icons/io";
 function Footer() {
   return (
-    <div className='d-flex flex-wrap p-3 mx-auto justify-content-around bg-dark text-white phil'>
-        <div>
-            <p><PiAddressBookFill className='text-warning t' /></p>
-            <p>PVPSIT</p>
-            <p>Vijayawada</p>
-        </div>
-        <div>
-            <p>pvp@gmail.com</p>
-            <p>9999999999</p>
-        </div>
+    <div className='d-flex felx-wrap justify-content-around bg-dark text-center text-white p-5 fs-4'>
+      <div>
+        <p className='text-info display-4'><IoMdContact /></p>
+        <p>PVP SIT : 1234567</p>
+        
+      </div>
+      <div>
+      <p className='text-info display-4'><IoMdMail /></p>
+        <p>pvp@mail.com</p>
+      </div>
     </div>
   )
 }
